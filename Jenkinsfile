@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Package. Build Docker image') {
         steps {
-            sh 'dockerImage = docker build  -f ./Dockerfile.multi -t petclinic:latest .'
+            sh 'dockerImage=$(docker build  -f ./Dockerfile.multi -t petclinic:latest .)'
             sh 'echo ${dockerImage}'
         }
     }
