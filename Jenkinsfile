@@ -30,7 +30,7 @@ pipeline {
 
     stage('Push image to ECR') {
         steps {
-            
+            sh 'echo qwerty'
         }
     }
 
