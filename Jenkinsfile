@@ -12,26 +12,25 @@ pipeline {
          )
       }
     }
-    stage('Build') {
-      steps {
-         sh './mvnw compile'
-      }
-    }
-    stage('Tests') {
-      steps {
-         sh './mvnw test -Dspring.profiles.active=mysql -DskipTests'
-      }
-    }
+    // stage('Build') {
+    //   steps {
+    //      sh './mvnw compile'
+    //   }
+    // }
+    // stage('Tests') {
+    //   steps {
+    //      sh './mvnw test -Dspring.profiles.active=mysql -DskipTests'
+    //   }
+    // }
     stage('Package. Build Docker image') {
         steps {
-            sh 'dockerImage=$(docker build  -f ./Dockerfile.multi -t petclinic:latest .)'
-            sh 'echo ${dockerImage}'
+            sh 'docker build  -f ./Dockerfile.multi -t petclinic:latest .'
         }
     }
 
     stage('Push image to ECR') {
         steps {
-            sh 'docker build  -f ./Dockerfile.multi -t petclinic:latest .'
+            
         }
     }
 
