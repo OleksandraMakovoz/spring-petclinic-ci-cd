@@ -12,23 +12,23 @@ pipeline {
          )
       }
     }
-    // stage('Build') {
-    //   steps {
-    //      sh './mvnw compile'
-    //   }
-    // }
-    // stage('Tests') {
-    //   steps {
-    //      sh './mvnw test -Dspring.profiles.active=mysql -DskipTests'
-    //   }
-    // }
+    stage('Build') {
+      steps {
+         sh './mvnw compile'
+      }
+    }
+    stage('Tests') {
+      steps {
+         sh './mvnw test -Dspring.profiles.active=mysql -DskipTests'
+      }
+    }
     stage('Package. Build Docker image') {
         steps {
             sh 'docker build  -f ./Dockerfile.multi -t petclinic:${BUILD_NUMBER} .'
         }
     }
 
-    stage('Build image') { 
+    stage('Push Docker image to ECR') { 
         steps {
             script {
                 docker.withRegistry("https://362447113011.dkr.ecr.eu-north-1.amazonaws.com", "ecr:eu-north-1:f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb") {
