@@ -35,8 +35,7 @@ pipeline {
                 sh """
                     docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:${BUILD_NUMBER}
                     docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:latest
-                    docker push 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:${BUILD_NUMBER}
-                    docker push 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:latest
+                    docker push --all-tags 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images
                 """
                 }
             }
