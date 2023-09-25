@@ -33,9 +33,8 @@ pipeline {
             script {
                 docker.withRegistry("https://362447113011.dkr.ecr.eu-north-1.amazonaws.com", "ecr:eu-north-1:f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb") {
                 sh """
-                    docker push petclinic:${BUILD_NUMBER}
-                    docker tag petclinic:${BUILD_NUMBER} petclinic:latest
-                    docker push petclinic:latest
+                    docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:${BUILD_NUMBER}
+                    docker push 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:${BUILD_NUMBER}
                 """
                 }
             }
