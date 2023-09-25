@@ -32,7 +32,7 @@ pipeline {
         steps {
             script {
                 docker.withRegistry("https://362447113011.dkr.ecr.eu-north-1.amazonaws.com", "ecr:eu-north-1:f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb") {
-                def customImage = docker.build("my-petclinic:latest", "-f ./Dockerfile.multi")
+                def customImage = docker.build("my-petclinic:latest", "-f ./Dockerfile.multi .")
                 docker.image(customImage).push()
                 }
             }
