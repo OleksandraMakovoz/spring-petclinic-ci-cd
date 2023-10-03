@@ -4,7 +4,7 @@ pipeline {
   }
   agent any
   environment {
-    registryCredential = 'ecr:eu-north-1:f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb'
+    registryCredential = 'ecr:eu-north-1:aws-creds'
     appRegistry = '362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images'
     awsRegistry = "https://362447113011.dkr.ecr.eu-north-1.amazonaws.com"
     cluster = "ProdCluster"
