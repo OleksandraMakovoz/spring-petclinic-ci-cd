@@ -38,14 +38,13 @@ pipeline {
     stage('Push Docker image to ECR') { 
         steps {
             script {
-                docker.withRegistry(awsRegistry, 'ecr:eu-north-1:aws-creds') {
                 sh """
+                    aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 362447113011.dkr.ecr.eu-north-1.amazonaws.com
                     sudo docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:${BUILD_NUMBER}
                     sudo docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:latest
                     sudo docker push --all-tags 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images
                     sudo docker image prune
                 """
-                }
             }
         }           
     }
