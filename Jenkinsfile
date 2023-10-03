@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Package. Build Docker image') {
         steps {
-            sh 'docker build  -f ./Dockerfile.multi -t petclinic:${BUILD_NUMBER} .'
+            sh 'sudo docker build  -f ./Dockerfile.multi -t petclinic:${BUILD_NUMBER} .'
         }
     }
 
