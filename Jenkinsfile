@@ -38,7 +38,7 @@ pipeline {
     stage('Push Docker image to ECR') { 
         steps {
             script {
-                docker.withRegistry(awsRegistry, 'aws-creds') {
+                docker.withRegistry(awsRegistry, 'ecr:eu-north-1:aws-creds') {
                 sh """
                     sudo docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:${BUILD_NUMBER}
                     sudo docker tag petclinic:${BUILD_NUMBER} 362447113011.dkr.ecr.eu-north-1.amazonaws.com/petclinic-ecr-images:latest
