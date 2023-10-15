@@ -22,8 +22,10 @@ pipeline {
 
     stage('Terraform init&plan') {
       steps {
-        sh 'terraform init'
-        sh 'terraform plan'
+        withAWS(credentials: 'aws-creds', region: 'eu-north-1') {
+          sh 'terraform init'
+          sh 'terraform plan'
+        }
       }
     }
 
