@@ -14,7 +14,7 @@ pipeline {
     stage('Checkout Terraform') {
       steps {
         git(
-          url: 'https://github.com/OleksandraMakovoz/spring-petclinic-iac.git'
+          url: 'https://github.com/OleksandraMakovoz/spring-petclinic-iac.git',
           branch: 'main'
         )
       }
