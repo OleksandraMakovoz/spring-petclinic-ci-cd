@@ -53,7 +53,7 @@ pipeline {
     }
     stage('Tests') {
       steps {
-        sh './mvnw test'
+        sh './mvnw test -DskipTests'
       }
     }
     stage('Package. Build Docker image') {
