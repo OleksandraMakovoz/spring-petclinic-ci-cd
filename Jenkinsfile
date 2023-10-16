@@ -33,6 +33,7 @@ pipeline {
       steps {
         withAWS(credentials: 'aws-creds', region: 'eu-north-1') {
           sh 'terraform apply -auto-approve'
+          sh 'rm -r .terraform'
         }
       }
     }
