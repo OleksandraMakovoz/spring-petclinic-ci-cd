@@ -52,7 +52,7 @@ pipeline {
     }
     stage('Tests') {
       steps {
-        sh './mvnw test -Dspring.profiles.active=mysql -DskipTests'
+        sh './mvnw test'
       }
     }
     stage('Package. Build Docker image') {
