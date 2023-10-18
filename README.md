@@ -1,2 +1,2 @@
 # spring-petclinic-ci-cd
-CI/CD environment IaaC Repo
+CI/CD environment Repo for Spring Petclinic App
